@@ -1,0 +1,236 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9022,        228]
+NotebookOptionsPosition[      7942,        201]
+NotebookOutlinePosition[      8308,        217]
+CellTagsIndexPosition[      8265,        214]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Class specification", "Subsection",
+ CellChangeTimes->{{3.851325194548856*^9, 
+  3.851325202946218*^9}},ExpressionUUID->"5c1725e3-a2e7-484b-a2c0-\
+9147d80744d6"],
+
+Cell["\<\
+In the next cell, specify the days on which the course is taught, including \
+any holidays, etc., and the desired output format.\
+\>", "Text",
+ CellChangeTimes->{{3.85132521667929*^9, 
+  3.851325295815868*^9}},ExpressionUUID->"725176cd-331d-42c3-84d3-\
+cf3b62726bda"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Days", " ", "of", " ", "the", " ", "week", " ", "the", " ", "course", " ",
+     "is", " ", "taught"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"classDaysOfWeek", "=", 
+     RowBox[{"{", 
+      RowBox[{"Tuesday", ",", "Thursday"}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "First", " ", "and", " ", "last", " ", "days", " ", "of", " ", "the", " ",
+      "term", " ", 
+     RowBox[{"(", "inclusive", ")"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"termStart", "=", 
+     RowBox[{"DateObject", "[", "\"\<January 18, 2022\>\"", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"termEnd", "=", 
+     RowBox[{"DateObject", "[", "\"\<April 29, 2022\>\"", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"No", "-", 
+     RowBox[{"class", " ", "days", " ", 
+      RowBox[{"(", 
+       RowBox[{"holidays", ",", " ", 
+        RowBox[{"etc", "."}]}], ")"}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"noClassDays", "=", 
+     RowBox[{"Flatten", "[", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"DateObject", "[", "\"\<March 4, 2022\>\"", "]"}], ",", " ", 
+        RowBox[{"(*", " ", 
+         RowBox[{"Mid", "-", 
+          RowBox[{"semester", " ", "break"}]}], " ", "*)"}], 
+        "\[IndentingNewLine]", 
+        RowBox[{"DateRange", "[", " ", 
+         RowBox[{"(*", " ", 
+          RowBox[{"Spring", " ", "Break"}], " ", "*)"}], 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"DateObject", "[", "\"\<March 7, 2022\>\"", "]"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"DateObject", "[", "\"\<March 11, 2022\>\"", "]"}]}], 
+         "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"DateObject", "[", "\"\<April 7, 2022\>\"", "]"}]}], " ", 
+       RowBox[{"(*", " ", 
+        RowBox[{"Spring", " ", "Carnival"}], " ", "*)"}], 
+       "\[IndentingNewLine]", "}"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"Formatting", " ", "for", " ", "output", " ", "dates", " ", 
+     RowBox[{"(", 
+      RowBox[{"see", " ", 
+       RowBox[{"DateString", "[", "]"}], " ", "for", " ", "details"}], 
+      ")"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"outputFormat", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<Day\>\"", ",", "\"\< \>\"", ",", "\"\<MonthNameShort\>\"", ",", 
+       "\"\< (\>\"", ",", "\"\<DayNameShort\>\"", ",", "\"\<)\>\""}], "}"}]}],
+     ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.851325300333857*^9, 3.851325323939376*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"73e309d1-aa11-4066-a49a-3760b8693109"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Class days", "Subsection",
+ CellChangeTimes->{{3.851325209460347*^9, 
+  3.851325211464052*^9}},ExpressionUUID->"059ca96f-28dd-4b6d-bf1a-\
+f4e4b51487d8"],
+
+Cell["Run the next cell to get the full list of class days.", "Text",
+ CellChangeTimes->{{3.85132528425214*^9, 3.8513252884093246`*^9}, {
+  3.8513253379652967`*^9, 
+  3.8513253671440563`*^9}},ExpressionUUID->"41e94052-f3e2-41d3-ac65-\
+62e885ff3025"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "list", " ", "the", " ", "days", " ", "of", " ", "the", " ", "week", " ", 
+    "within", " ", "the", " ", "term", " ", "on", " ", "which", " ", "the", 
+    " ", "class", " ", "is", " ", "taught"}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"classDays", "=", 
+     RowBox[{"Sort", "[", 
+      RowBox[{"Flatten", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"DateRange", "[", 
+          RowBox[{"termStart", ",", "termEnd", ",", "#"}], "]"}], "&"}], "/@",
+         "classDaysOfWeek"}], "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"remove", " ", "any", " ", "no"}], "-", 
+     RowBox[{"class", " ", "days"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"classDays", "=", 
+     RowBox[{"Complement", "[", 
+      RowBox[{"classDays", ",", "noClassDays"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "print", " ", "all", " ", "dates", " ", "on", " ", "which", " ", "class", 
+     " ", "is", " ", "actually", " ", "taught"}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"strings", "=", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"DateString", "[", 
+        RowBox[{"#", ",", "outputFormat"}], "]"}], "&"}], "/@", 
+      "classDays"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"StringRiffle", "[", 
+    RowBox[{"strings", ",", "\"\<\\n\>\""}], "]"}], "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<(Total number of class days: \>\"", "<>", 
+     RowBox[{"ToString", "[", 
+      RowBox[{"Length", "[", "classDays", "]"}], "]"}], "<>", "\"\<)\>\""}], 
+    "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.851323356235407*^9, 3.851323361636072*^9}, {
+  3.851323394573802*^9, 3.8513235342102757`*^9}, {3.851323838593006*^9, 
+  3.8513239185583267`*^9}, {3.851323952838484*^9, 3.851324226015236*^9}, {
+  3.8513244106513557`*^9, 3.8513244533482313`*^9}, {3.8513248493396883`*^9, 
+  3.851324986590309*^9}, {3.85132516479418*^9, 3.85132518649117*^9}, {
+  3.851325237042034*^9, 3.851325249968759*^9}, {3.8513253541143723`*^9, 
+  3.8513253552104683`*^9}},
+ CellLabel->"In[6]:=",ExpressionUUID->"4dbe07a4-db1a-4259-b528-f2c7ac3bcd87"],
+
+Cell[BoxData["\<\"18 Jan (Tue)\\n20 Jan (Thu)\\n25 Jan (Tue)\\n27 Jan \
+(Thu)\\n01 Feb (Tue)\\n03 Feb (Thu)\\n08 Feb (Tue)\\n10 Feb (Thu)\\n15 Feb \
+(Tue)\\n17 Feb (Thu)\\n22 Feb (Tue)\\n24 Feb (Thu)\\n01 Mar (Tue)\\n03 Mar \
+(Thu)\\n15 Mar (Tue)\\n17 Mar (Thu)\\n22 Mar (Tue)\\n24 Mar (Thu)\\n29 Mar \
+(Tue)\\n31 Mar (Thu)\\n05 Apr (Tue)\\n12 Apr (Tue)\\n14 Apr (Thu)\\n19 Apr \
+(Tue)\\n21 Apr (Thu)\\n26 Apr (Tue)\\n28 Apr (Thu)\"\>"], "Output",
+ CellChangeTimes->{{3.8513234091657743`*^9, 3.851323442175384*^9}, 
+   3.851323534585391*^9, {3.851323854200513*^9, 3.851323862632209*^9}, {
+   3.851323910411162*^9, 3.8513239191683702`*^9}, 3.851323953443633*^9, 
+   3.851324064745864*^9, 3.851324158368532*^9, 3.851324231938972*^9, 
+   3.8513244543297873`*^9, 3.851324881444098*^9, 3.85132491380125*^9, {
+   3.8513249636269007`*^9, 3.85132498697738*^9}, 3.851325369529729*^9, 
+   3.851325418783441*^9},
+ CellLabel->"Out[9]=",ExpressionUUID->"44a9f144-1bc2-4f3d-9a45-91be171c28d1"],
+
+Cell[BoxData["\<\"(Total number of class days: 27)\"\>"], "Print",
+ CellChangeTimes->{{3.8513249636302547`*^9, 3.851324986979591*^9}, 
+   3.851325369532351*^9, 3.851325418785478*^9},
+ CellLabel->
+  "During evaluation of \
+In[6]:=",ExpressionUUID->"d57e0381-d75d-46b5-b51b-076b89f00d37"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{702, 877},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"12.0 for Mac OS X x86 (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 167, 3, 67, "Subsection",ExpressionUUID->"5c1725e3-a2e7-484b-a2c0-9147d80744d6"],
+Cell[750, 27, 277, 6, 73, "Text",ExpressionUUID->"725176cd-331d-42c3-84d3-cf3b62726bda"],
+Cell[1030, 35, 2870, 69, 558, "Input",ExpressionUUID->"73e309d1-aa11-4066-a49a-3760b8693109"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3937, 109, 158, 3, 67, "Subsection",ExpressionUUID->"059ca96f-28dd-4b6d-bf1a-f4e4b51487d8"],
+Cell[4098, 114, 249, 4, 44, "Text",ExpressionUUID->"41e94052-f3e2-41d3-ac65-62e885ff3025"],
+Cell[CellGroupData[{
+Cell[4372, 122, 2271, 53, 324, "Input",ExpressionUUID->"4dbe07a4-db1a-4259-b528-f2c7ac3bcd87"],
+Cell[6646, 177, 979, 13, 719, "Output",ExpressionUUID->"44a9f144-1bc2-4f3d-9a45-91be171c28d1"],
+Cell[7628, 192, 286, 5, 29, "Print",ExpressionUUID->"d57e0381-d75d-46b5-b51b-076b89f00d37"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
