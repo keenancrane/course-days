@@ -13,3 +13,5 @@ Mathematica notebook for generating the list of class days for a given class.
 
 - A list of class days, as formatted strings
 - The total number of class days
+
+![Example usage](ClassDays.jpg)
